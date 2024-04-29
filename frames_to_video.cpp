@@ -7,10 +7,9 @@ using namespace std;
 
 int frames_to_video() {
     // Define the desired frames per second (FPS)
-    string fps_string, folderPath_input, fileName;
+    extern string folderPath_output_stitchedjpg;
+    string fps_string;
     int fps = 0;
-    fileName = "directories.yml";
-
     cout << "Enter the frame rate (fps) of the output video: ";
     getline(cin, fps_string);
 
@@ -22,13 +21,15 @@ int frames_to_video() {
     else {
         fps = stoi(fps_string);
     }
+    /*string fps_string, folderPath_input, fileName;
+
     // Specify the input and output filenames
     FileStorage fs(fileName, FileStorage::READ);
     fs[".output"] >> folderPath_input;
     fs.release(); 
-    std::cout << "Using path '" << folderPath_input << "' from directories.yml" << endl;
+    std::cout << "Using path '" << folderPath_input << "' from directories.yml" << endl;*/
 
-    std::string input_filename = folderPath_input + "/%d.jpg"; // Update the folder path accordingly
+    std::string input_filename = folderPath_output_stitchedjpg + "/%d.jpg"; // Update the folder path accordingly
     std::string output_filename = "output.mp4";
 
     // Construct the FFmpeg command

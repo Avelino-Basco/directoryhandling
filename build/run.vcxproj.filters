@@ -4,15 +4,6 @@
     <ClCompile Include="C:\Users\admin\Desktop\thesis\projects\run\run.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\admin\Desktop\thesis\projects\run\video_to_frames.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\admin\Desktop\thesis\projects\run\loopstitch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\admin\Desktop\thesis\projects\run\frames_to_video.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\admin\Desktop\thesis\projects\run\CMakeLists.txt" />

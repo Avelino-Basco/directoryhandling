@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "RelWithDebInfo/run.exe"
+			"path" : "Debug/run.exe"
 		},
 		{
-			"path" : "RelWithDebInfo/run.pdb"
+			"path" : "Debug/run.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -52,7 +52,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++17"
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17"
 				}
 			],
 			"includes" : 
@@ -74,10 +74,7 @@
 			},
 			"sourceIndexes" : 
 			[
-				0,
-				1,
-				2,
-				3
+				0
 			]
 		}
 	],
@@ -93,7 +90,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /Zi /O2 /Ob1 /DNDEBUG",
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1",
 				"role" : "flags"
 			},
 			{
@@ -102,82 +99,82 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480.lib",
+				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480d.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480.lib",
+				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480d.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480.lib",
+				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480d.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480.lib",
+				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480d.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480.lib",
+				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480d.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480.lib",
+				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480d.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480.lib",
+				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480d.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480.lib",
+				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480d.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480.lib",
+				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480d.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480.lib",
+				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480d.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480.lib",
+				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480d.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480.lib",
+				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480d.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480.lib",
+				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480d.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480.lib",
+				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480d.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480.lib",
+				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480d.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480.lib",
+				"fragment" : "C:\\Users\\admin\\Downloads\\opencv\\build\\x64\\vc16\\lib\\opencv_world480d.lib",
 				"role" : "libraries"
 			},
 			{
@@ -200,10 +197,7 @@
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				0,
-				1,
-				2,
-				3
+				0
 			]
 		}
 	],
@@ -213,24 +207,6 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "run.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "video_to_frames.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "loopstitch.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "frames_to_video.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

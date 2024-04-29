@@ -322,9 +322,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\admin\Desktop\thesis\projects\run\run.cpp" />
-    <ClCompile Include="C:\Users\admin\Desktop\thesis\projects\run\video_to_frames.cpp" />
-    <ClCompile Include="C:\Users\admin\Desktop\thesis\projects\run\loopstitch.cpp" />
-    <ClCompile Include="C:\Users\admin\Desktop\thesis\projects\run\frames_to_video.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\admin\Desktop\thesis\projects\run\build\ZERO_CHECK.vcxproj">

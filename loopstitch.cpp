@@ -2,13 +2,12 @@
 #include <string>
 #include <sstream>
 #include <filesystem>
-#include <opencv2/opencv.hpp>
 
 using namespace std;
-using namespace cv;
 namespace fs = std::filesystem;
 
 int loopstitcher( int totalFrames, int cameras) {
+    extern string folderPath_exe, folderPath_output_stitchedjpg;
     /*
     string folderPath_exe, folderPath_output, fileName, folderPath;
 
@@ -60,7 +59,8 @@ int loopstitcher( int totalFrames, int cameras) {
         string cont_str;
         int cont;
 
-        arguments << "--frameno " << i << " " << cameras << " --output " << folderPath_output << i << ".jpg --features akaze --conf_thresh 0.1 --match_conf 0.1 --warp mercator";
+
+        arguments << "--frameno " << i << " " << cameras << " --output " << folderPath_output_stitchedjpg << "/" << i << ".jpg --features akaze --conf_thresh 0.1 --match_conf 0.1 --warp mercator";
 
         // Convert the stringstream to a string
         string argumentString = arguments.str();

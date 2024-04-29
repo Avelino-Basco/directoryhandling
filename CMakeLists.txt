@@ -9,7 +9,7 @@ enable_testing()
 find_package( OpenCV REQUIRED )
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 
-add_executable(run run.cpp video_to_frames.cpp loopstitch.cpp frames_to_video.cpp)
+add_executable(run run.cpp)
 
 target_link_libraries( run ${OpenCV_LIBS} )
 

@@ -1,6 +1,6 @@
-//#include "video_to_frames.cpp" 
-//#include "loopstitch.cpp"
-//#include "frames_to_video.cpp"
+#include "video_to_frames.cpp" 
+#include "loopstitch.cpp"
+#include "frames_to_video.cpp"
 
 #include <iostream>
 #include <filesystem>
@@ -38,29 +38,45 @@ int main(){
     getline(cin, folderPath_mp4);
     cout << "Enter the directory path containing .exe for stitcher: ";
     getline(cin, folderPath_exe);
-    cout << "Enter output directory path: ";
+    cout << "Enter output directory path for the stitched frames: ";
     getline(cin, folderPath_output_stitchedjpg);
 
     fileName = "directories.yml";
 
     //setting of blank entries/defaults
     //variable = (condition) ? value_if_true : value_if_false;
-    folderPath_mp4 = (folderPath_mp4.length() == 0) ?  : value_if_false;
-    //default if no directory
-    if(folderPath_mp4.length() == 0){
-        //reads from directories.yaml
-        FileStorage fs(fileName, FileStorage::READ);
-        fs[".mp4"] >> folderPath_mp4;
-        fs.release(); 
+    //WRITE - fs << ".mp4" << folderPath_mp4;
+    //READ - fs[".mp4"] >> folderPath_mp4;
+    FileStorage fs(fileName, FileStorage::WRITE);
+    if (folderPath_mp4.length() != 0) { 
+        fs << "mp4" << folderPath_mp4;} 
+    else {
+        cout << "No camera source directory given." << endl;} 
+    if (folderPath_exe.length() != 0) {
+        fs << "exe" << folderPath_exe;} 
+    else {
+            cout << "No stitching.exe directory given." << endl;} 
+    if (folderPath_output_stitchedjpg.length() != 0) { 
+        fs << "output" << folderPath_output_stitchedjpg;} 
+    else {
+        cout << "No stitching output directory given." << endl;} 
+    fs.release(); 
 
-        std::cout << "No directory input. Using default '" << folderPath_mp4 << "' from directories.yml" << endl;
-    }
+    FileStorage fs1(fileName, FileStorage::READ);
+    if (folderPath_mp4.length() == 0)  {
+        fs1["mp4"] >> folderPath_mp4;} 
+    else{ 
+        cout << "Writing camera sources directory to directories.yml..." << endl;}
+    if (folderPath_exe.length() == 0)  {
+        fs1["exe"] >> folderPath_exe;} 
     else{
-        FileStorage fs(fileName, FileStorage::WRITE);
-        fs << ".mp4" << folderPath_mp4;
-        fs.release();
-        std::cout << "Entered directory path '" << folderPath_mp4 << "' used and written into directories.yml." << endl;
-    }
+        cout << "Writing stitching.exe directory to directories.yml..." << endl;}
+    if (folderPath_output_stitchedjpg.length() == 0) {
+        fs1["output"] >> folderPath_output_stitchedjpg; }
+    else{
+        cout << "Writing stitching output directory to directories.yml..." << endl;
+    } 
+    fs1.release(); 
 
     //requests FPS
     cout << "Enter the frame rate (fps): ";
