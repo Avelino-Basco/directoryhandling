@@ -3,11 +3,13 @@
 #include <sstream>
 #include <filesystem>
 
+#include "run.hpp"
+
 using namespace std;
 namespace fs = std::filesystem;
 
 int loopstitcher( int totalFrames, int cameras) {
-    extern string folderPath_exe, folderPath_output_stitchedjpg;
+    //extern string folderPath_exe, folderPath_output_stitchedjpg;
     /*
     string folderPath_exe, folderPath_output, fileName, folderPath;
 

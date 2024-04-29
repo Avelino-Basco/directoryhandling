@@ -3,6 +3,8 @@
 #include <string>
 #include <cstdlib>
 
+#include "run.hpp"
+
 
 using namespace std;
 namespace fs = std::filesystem;

@@ -2,6 +2,8 @@
 #include "loopstitch.cpp"
 #include "frames_to_video.cpp"
 
+#include "run.hpp"
+
 #include <iostream>
 #include <filesystem>
 #include <string>
@@ -12,6 +14,8 @@ using namespace cv;
 using namespace std;
 
 //naming convention of video files: n.mp4 (e.g. 1.mp4, 2.mp4, 3.mp4)
+
+string folderPath_mp4, folderPath_exe, folderPath_output_stitchedjpg;
 
 int file_counter(string& directory)
 {
@@ -31,8 +35,9 @@ int file_counter(string& directory)
 }
 
 int main(){
-    string folderPath_mp4, folderPath_exe, folderPath_output_stitchedjpg, fps_str, skip_str, fileName;
+    string fps_str, skip_str, fileName;
     int fps, skip;
+    
 
     cout << "Enter the directory path containing .mp4 files: ";
     getline(cin, folderPath_mp4);
@@ -41,7 +46,7 @@ int main(){
     cout << "Enter output directory path for the stitched frames: ";
     getline(cin, folderPath_output_stitchedjpg);
 
-    fileName = "directories.yml";
+    fileName = "C:/Users/ASUS/Desktop/thesis/projects/directory/directoryhandling";
 
     //setting of blank entries/defaults
     //variable = (condition) ? value_if_true : value_if_false;

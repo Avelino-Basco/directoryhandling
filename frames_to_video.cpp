@@ -5,9 +5,11 @@
 using namespace cv;
 using namespace std;
 
+#include "run.hpp"
+
 int frames_to_video() {
     // Define the desired frames per second (FPS)
-    extern string folderPath_output_stitchedjpg;
+    //extern string folderPath_output_stitchedjpg;
     string fps_string;
     int fps = 0;
     cout << "Enter the frame rate (fps) of the output video: ";
