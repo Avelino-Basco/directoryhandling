@@ -9,6 +9,7 @@ using namespace cv;
 namespace fs = std::filesystem;
 
 int loopstitcher( int totalFrames, int cameras) {
+    /*
     string folderPath_exe, folderPath_output, fileName, folderPath;
 
     // Set the path to your C++ program
@@ -50,7 +51,7 @@ int loopstitcher( int totalFrames, int cameras) {
         fs << ".output" << folderPath;
         fs.release();
         std::cout << "Entered directory path '" << folderPath << "' used and written into directories.yml." << endl;
-    }
+    }*/
 
     // Loop through each frame
     for (int i = 1; i < totalFrames; i++) {

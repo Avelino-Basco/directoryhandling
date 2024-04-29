@@ -31,14 +31,21 @@ int file_counter(string& directory)
 }
 
 int main(){
-    string folderPath_mp4, fps_str, skip_str, fileName;
+    string folderPath_mp4, folderPath_exe, folderPath_output_stitchedjpg, fps_str, skip_str, fileName;
     int fps, skip;
 
     cout << "Enter the directory path containing .mp4 files: ";
     getline(cin, folderPath_mp4);
+    cout << "Enter the directory path containing .exe for stitcher: ";
+    getline(cin, folderPath_exe);
+    cout << "Enter output directory path: ";
+    getline(cin, folderPath_output_stitchedjpg);
 
     fileName = "directories.yml";
 
+    //setting of blank entries/defaults
+    //variable = (condition) ? value_if_true : value_if_false;
+    folderPath_mp4 = (folderPath_mp4.length() == 0) ?  : value_if_false;
     //default if no directory
     if(folderPath_mp4.length() == 0){
         //reads from directories.yaml
@@ -48,9 +55,7 @@ int main(){
 
         std::cout << "No directory input. Using default '" << folderPath_mp4 << "' from directories.yml" << endl;
     }
-
     else{
-        
         FileStorage fs(fileName, FileStorage::WRITE);
         fs << ".mp4" << folderPath_mp4;
         fs.release();
