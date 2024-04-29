@@ -34,7 +34,7 @@ int processMp4Files(const string& directory, int fps, int skip) {
         if(!skip){
             if (entry.path().extension() == ".mp4") {
                 string videoFile = entry.path().string();
-                string outputFolder = entry.path().stem().string() + "_frames";
+                string outputFolder = folderPath_output_stitchedjpg + "/" + entry.path().stem().string() + "_frames";
                 extractFramesFromVideo(videoFile, outputFolder, fps);
             }
         }

@@ -37,16 +37,15 @@ int file_counter(string& directory)
 int main(){
     string fps_str, skip_str, fileName;
     int fps, skip;
-    
 
     cout << "Enter the directory path containing .mp4 files: ";
     getline(cin, folderPath_mp4);
     cout << "Enter the directory path containing .exe for stitcher: ";
     getline(cin, folderPath_exe);
     cout << "Enter output directory path for the stitched frames: ";
-    getline(cin, folderPath_output_stitchedjpg);
+    getline(cin, folderPath_output_stitchedjpg);    
 
-    fileName = "C:/Users/ASUS/Desktop/thesis/projects/directory/directoryhandling";
+    fileName = "../../directoryhandling.yml";
 
     //setting of blank entries/defaults
     //variable = (condition) ? value_if_true : value_if_false;
