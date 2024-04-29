@@ -1,0 +1,132 @@
+//#include "video_to_frames.cpp" 
+//#include "loopstitch.cpp"
+//#include "frames_to_video.cpp"
+
+#include <iostream>
+#include <filesystem>
+#include <string>
+#include <fstream>
+#include <opencv2/opencv.hpp>
+
+using namespace cv;
+using namespace std;
+
+//naming convention of video files: n.mp4 (e.g. 1.mp4, 2.mp4, 3.mp4)
+
+int file_counter(string& directory)
+{
+   int count = 0;
+   //cout << directory << endl;
+
+   std::filesystem::path p1 (directory);
+
+   for (auto& p : std::filesystem::directory_iterator(p1))
+   {
+      ++count;
+   }    
+
+   //p1 is string() since without it, display is "C:\\Users\\admin" due to "\" being an escape character
+   std::cout << "# of files(n " << p1.string() << ": " << count << '\n' << endl;;
+   return count;
+}
+
+int main(){
+    string folderPath_mp4, fps_str, skip_str, fileName;
+    int fps, skip;
+
+    cout << "Enter the directory path containing .mp4 files: ";
+    getline(cin, folderPath_mp4);
+
+    fileName = "directories.yml";
+
+    //default if no directory
+    if(folderPath_mp4.length() == 0){
+        //reads from directories.yaml
+        FileStorage fs(fileName, FileStorage::READ);
+        fs[".mp4"] >> folderPath_mp4;
+        fs.release(); 
+
+        std::cout << "No directory input. Using default '" << folderPath_mp4 << "' from directories.yml" << endl;
+    }
+
+    else{
+        
+        FileStorage fs(fileName, FileStorage::WRITE);
+        fs << ".mp4" << folderPath_mp4;
+        fs.release();
+        std::cout << "Entered directory path '" << folderPath_mp4 << "' used and written into directories.yml." << endl;
+    }
+
+    //requests FPS
+    cout << "Enter the frame rate (fps): ";
+    getline(cin, fps_str);
+
+    if(fps_str.length() == 0){
+        fps = 1;
+        std::cout << "No specified fps. Set to 1 fps by default..." << endl;
+    }
+
+    else {
+        fps = stoi(fps_str);
+    }
+    
+    cout << "Existing video to frames? (1/0): " << endl;
+    getline(cin, skip_str);
+
+    if(skip_str.length() == 0){
+        skip = 1;
+        std::cout << "No input provided. Skipping video to frames." << endl;
+    }
+
+    else {
+        skip = stoi(skip_str);
+        if (skip)
+            std::cout << "Skipping parsing videos..." << endl;
+        else
+            std::cout << "Proceeding with parsing videos..." << endl;
+
+
+    }
+
+    //MP4 to frames
+    //int to keep track of folders
+    int no_of_folders = processMp4Files(folderPath_mp4, fps, skip);
+
+//looping: stitch frames together
+    
+    //loop through each x_frames folder and get the minimum number of frames
+    int framelimit = 0;
+    int framelimit_holder = 0;
+    for (int i = 1; i < no_of_folders + 1; ++i) {
+        if (i == 1) 
+        {
+            string folder = to_string(i) + "_frames";
+            framelimit = file_counter(folder);
+        }
+
+        else 
+        {
+            string folder = to_string(i) + "_frames";
+            framelimit_holder = file_counter(folder);
+
+            if(framelimit_holder < framelimit) 
+            {
+                framelimit = framelimit_holder;
+            }
+        }
+    }
+
+    cout << "max frames:" << to_string(framelimit) << endl;
+    int early_stop = loopstitcher(framelimit, no_of_folders);
+
+    if(early_stop){
+        cout << "Cancelling stitching." << endl;
+        return 0;
+    }
+
+    
+
+    frames_to_video();
+        
+    return 0;
+}
