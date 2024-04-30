@@ -1,0 +1,9 @@
+C:/Users/admin/Desktop/thesis/projects/run/build/CMakeFiles/Experimental.dir
+C:/Users/admin/Desktop/thesis/projects/run/build/CMakeFiles/Nightly.dir
+C:/Users/admin/Desktop/thesis/projects/run/build/CMakeFiles/Continuous.dir
+C:/Users/admin/Desktop/thesis/projects/run/build/CMakeFiles/NightlyMemoryCheck.dir
+C:/Users/admin/Desktop/thesis/projects/run/build/CMakeFiles/run.dir
+C:/Users/admin/Desktop/thesis/projects/run/build/CMakeFiles/PACKAGE.dir
+C:/Users/admin/Desktop/thesis/projects/run/build/CMakeFiles/RUN_TESTS.dir
+C:/Users/admin/Desktop/thesis/projects/run/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/admin/Desktop/thesis/projects/run/build/CMakeFiles/ZERO_CHECK.dir

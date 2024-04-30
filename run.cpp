@@ -30,7 +30,7 @@ int file_counter(string& directory)
    }    
 
    //p1 is string() since without it, display is "C:\\Users\\admin" due to "\" being an escape character
-   std::cout << "# of files(n " << p1.string() << ": " << count << '\n' << endl;;
+   std::cout << "# of files in " << p1.string() << ": " << count << '\n' << endl;;
    return count;
 }
 
@@ -38,11 +38,11 @@ int main(){
     string fps_str, skip_str, fileName;
     int fps, skip;
 
-    cout << "Enter the directory path containing .mp4 files: ";
+    cout << "[IN] Enter the directory path containing .mp4 files: ";
     getline(cin, folderPath_mp4);
-    cout << "Enter the directory path containing .exe for stitcher: ";
+    cout << "[IN] Enter the directory path containing .exe for stitcher: ";
     getline(cin, folderPath_exe);
-    cout << "Enter output directory path for the stitched frames: ";
+    cout << "[IN] Enter output directory path for the stitched frames: ";
     getline(cin, folderPath_output_stitchedjpg);    
 
     fileName = "../../directoryhandling.yml";
@@ -51,64 +51,71 @@ int main(){
     //variable = (condition) ? value_if_true : value_if_false;
     //WRITE - fs << ".mp4" << folderPath_mp4;
     //READ - fs[".mp4"] >> folderPath_mp4;
+
+    FileStorage fs1(fileName, FileStorage::READ);
+    if (folderPath_mp4.length() == 0)  {
+        cout << "[DIR] No camera source directory given. Reading from directoryhandling.yml..." << endl;
+        fs1["mp4"] >> folderPath_mp4;} 
+    else{ 
+        cout << "[DIR] Writing camera sources directory to directoryhandling.yml.yml..." << endl;}
+    if (folderPath_exe.length() == 0)  {
+        cout << "[DIR] No stitching.exe directory given. Reading from directoryhandling.yml..." << endl;
+        fs1["exe"] >> folderPath_exe;} 
+    else{
+        cout << "[DIR] Writing stitching.exe directory to directoryhandling.yml..." << endl;}
+    if (folderPath_output_stitchedjpg.length() == 0) {
+        cout << "[DIR] No stitching output directory given. Reading from directoryhandling.yml..." << endl;
+        fs1["output"] >> folderPath_output_stitchedjpg; }
+    else{
+        cout << "[DIR] Writing stitching output directory to directoryhandling.yml.yml..." << endl;
+    } 
+    fs1.release(); 
+
     FileStorage fs(fileName, FileStorage::WRITE);
     if (folderPath_mp4.length() != 0) { 
         fs << "mp4" << folderPath_mp4;} 
     else {
-        cout << "No camera source directory given." << endl;} 
+        } 
     if (folderPath_exe.length() != 0) {
         fs << "exe" << folderPath_exe;} 
     else {
-            cout << "No stitching.exe directory given." << endl;} 
+            } 
     if (folderPath_output_stitchedjpg.length() != 0) { 
         fs << "output" << folderPath_output_stitchedjpg;} 
     else {
-        cout << "No stitching output directory given." << endl;} 
+        }
+    fs << "yaml" << folderPa; 
     fs.release(); 
 
-    FileStorage fs1(fileName, FileStorage::READ);
-    if (folderPath_mp4.length() == 0)  {
-        fs1["mp4"] >> folderPath_mp4;} 
-    else{ 
-        cout << "Writing camera sources directory to directories.yml..." << endl;}
-    if (folderPath_exe.length() == 0)  {
-        fs1["exe"] >> folderPath_exe;} 
-    else{
-        cout << "Writing stitching.exe directory to directories.yml..." << endl;}
-    if (folderPath_output_stitchedjpg.length() == 0) {
-        fs1["output"] >> folderPath_output_stitchedjpg; }
-    else{
-        cout << "Writing stitching output directory to directories.yml..." << endl;
-    } 
-    fs1.release(); 
+
 
     //requests FPS
-    cout << "Enter the frame rate (fps): ";
+    cout << "[IN] Enter the frame rate (fps): ";
     getline(cin, fps_str);
 
     if(fps_str.length() == 0){
         fps = 1;
-        std::cout << "No specified fps. Set to 1 fps by default..." << endl;
+        std::cout << "[FPS] No specified fps. Set to 1 fps by default..." << endl;
     }
 
     else {
         fps = stoi(fps_str);
     }
     
-    cout << "Existing video to frames? (1/0): " << endl;
+    cout << "[IN] Existing video to frames? (1/0): " << endl;
     getline(cin, skip_str);
 
     if(skip_str.length() == 0){
         skip = 1;
-        std::cout << "No input provided. Skipping video to frames." << endl;
+        std::cout << "[SKP] No input provided. Skipping video to frames." << endl;
     }
 
     else {
         skip = stoi(skip_str);
         if (skip)
-            std::cout << "Skipping parsing videos..." << endl;
+            std::cout << "[SKP] Skipping parsing videos..." << endl;
         else
-            std::cout << "Proceeding with parsing videos..." << endl;
+            std::cout << "[SKP] Proceeding with parsing videos..." << endl;
 
 
     }
@@ -141,11 +148,11 @@ int main(){
         }
     }
 
-    cout << "max frames:" << to_string(framelimit) << endl;
+    cout << "[INFO] max frames:" << to_string(framelimit) << endl;
     int early_stop = loopstitcher(framelimit, no_of_folders);
 
     if(early_stop){
-        cout << "Cancelling stitching." << endl;
+        cout << "[STOP] Cancelling stitching." << endl;
         return 0;
     }
 

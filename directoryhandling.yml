@@ -1,0 +1,5 @@
+%YAML:1.0
+---
+mp4: "C:\\Users\\admin\\Desktop\\thesis\\projects\\stitching\\camsources\\source3"
+exe: "C:\\Users\\admin\\Desktop\\thesis\\projects\\stitching\\build\\Debug\\stitching.exe"
+output: "C:\\Users\\admin\\Desktop\\thesis\\projects\\stitching\\camsources\\stitched_frames"
