@@ -31,7 +31,7 @@ int frames_to_video() {
     fs.release(); 
     std::cout << "Using path '" << folderPath_input << "' from directories.yml" << endl;*/
 
-    std::string input_filename = folderPath_output_stitchedjpg + "/%d.jpg"; // Update the folder path accordingly
+    std::string input_filename = folderPath_output_stitchedjpg + "/stitchedjpg" + "/%d.jpg"; // Update the folder path accordingly
     std::string output_filename = "output.mp4";
 
     // Construct the FFmpeg command

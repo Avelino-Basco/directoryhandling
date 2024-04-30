@@ -19,23 +19,26 @@ string folderPath_mp4, folderPath_exe, folderPath_output_stitchedjpg;
 
 int file_counter(string& directory)
 {
+   cout << "1" << endl;
    int count = 0;
    //cout << directory << endl;
 
    std::filesystem::path p1 (directory);
+   cout << "2" << endl;
 
    for (auto& p : std::filesystem::directory_iterator(p1))
    {
       ++count;
    }    
 
+    cout << "3" << endl;
    //p1 is string() since without it, display is "C:\\Users\\admin" due to "\" being an escape character
    std::cout << "# of files in " << p1.string() << ": " << count << '\n' << endl;;
    return count;
 }
 
 int main(){
-    string fps_str, skip_str, fileName;
+    string fps_str, skip_str, fileName, folderPath_yaml;
     int fps, skip;
 
     cout << "[IN] Enter the directory path containing .mp4 files: ";
@@ -43,9 +46,11 @@ int main(){
     cout << "[IN] Enter the directory path containing .exe for stitcher: ";
     getline(cin, folderPath_exe);
     cout << "[IN] Enter output directory path for the stitched frames: ";
-    getline(cin, folderPath_output_stitchedjpg);    
+    getline(cin, folderPath_output_stitchedjpg);
+    /*cout << "[IN] Enter path for directoryhandling.yml: ";
+    getline(cin, folderPath_yaml);*/      
 
-    fileName = "../../directoryhandling.yml";
+    fileName = "../../../directoryhandling.yml";
 
     //setting of blank entries/defaults
     //variable = (condition) ? value_if_true : value_if_false;
@@ -57,7 +62,7 @@ int main(){
         cout << "[DIR] No camera source directory given. Reading from directoryhandling.yml..." << endl;
         fs1["mp4"] >> folderPath_mp4;} 
     else{ 
-        cout << "[DIR] Writing camera sources directory to directoryhandling.yml.yml..." << endl;}
+        cout << "[DIR] Writing camera sources directory to directoryhandling.yml..." << endl;}
     if (folderPath_exe.length() == 0)  {
         cout << "[DIR] No stitching.exe directory given. Reading from directoryhandling.yml..." << endl;
         fs1["exe"] >> folderPath_exe;} 
@@ -67,8 +72,14 @@ int main(){
         cout << "[DIR] No stitching output directory given. Reading from directoryhandling.yml..." << endl;
         fs1["output"] >> folderPath_output_stitchedjpg; }
     else{
-        cout << "[DIR] Writing stitching output directory to directoryhandling.yml.yml..." << endl;
+        cout << "[DIR] Writing stitching output directory to directoryhandling.yml..." << endl;
     } 
+    /*if (folderPath_yaml.length() == 0) {
+        cout << "[DIR] No directoryhandling.yaml directory given. Reading from directoryhandling.yml..." << endl;
+        fs1["output"] >> folderPath_yaml; }
+    else{
+        cout << "[DIR] Writing directoryhandling.yaml directory to directoryhandling.yml..." << endl;
+    } */
     fs1.release(); 
 
     FileStorage fs(fileName, FileStorage::WRITE);
@@ -84,7 +95,10 @@ int main(){
         fs << "output" << folderPath_output_stitchedjpg;} 
     else {
         }
-    fs << "yaml" << folderPa; 
+    /*if (folderPath_yaml.length() != 0) { 
+        fs << "yaml" << folderPath_yaml;} 
+    else {
+        }*/
     fs.release(); 
 
 
@@ -123,6 +137,7 @@ int main(){
     //MP4 to frames
     //int to keep track of folders
     int no_of_folders = processMp4Files(folderPath_mp4, fps, skip);
+    
 
 //looping: stitch frames together
     
@@ -130,15 +145,15 @@ int main(){
     int framelimit = 0;
     int framelimit_holder = 0;
     for (int i = 1; i < no_of_folders + 1; ++i) {
+        string folder = folderPath_output_stitchedjpg + "/" + to_string(i) + "_frames";
         if (i == 1) 
         {
-            string folder = to_string(i) + "_frames";
             framelimit = file_counter(folder);
+            cout << "COUNTED" << endl;
         }
 
         else 
         {
-            string folder = to_string(i) + "_frames";
             framelimit_holder = file_counter(folder);
 
             if(framelimit_holder < framelimit) 
